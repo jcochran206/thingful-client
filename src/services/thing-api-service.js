@@ -4,8 +4,7 @@ import TokenService from './token-service'
 const ThingApiService = {
   getThings() {
     return fetch(`${config.API_ENDPOINT}/things`, {
-      headers: { //authorization header to basic here
-        'authorization': `basic ${TokenService.getAuthToken()}`
+      headers: { 
       },
     })
       .then(res =>
@@ -17,6 +16,7 @@ const ThingApiService = {
   getThing(thingId) {
     return fetch(`${config.API_ENDPOINT}/things/${thingId}`, {
       headers: {
+        'authorization': `basic ${TokenService.getAuthToken()}`,
       },
     })
       .then(res =>
